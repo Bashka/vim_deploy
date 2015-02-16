@@ -1,5 +1,5 @@
 " Date Create: 2015-02-06 23:11:26
-" Last Change: 2015-02-06 23:48:02
+" Last Change: 2015-02-09 11:23:32
 " Author: Artur Sh. Mamedbekov (Artur-Mamedbekov@yandex.ru)
 " License: GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 
@@ -31,6 +31,13 @@ endfunction " }}}
 " @param string task Имя целевой задачи.
 "" }}}
 function! s:Class.run(task) " {{{
+endfunction " }}}
+
+"" {{{
+" Метод возвращает имя файла, используемого для конфигурирования системы развертывания.
+" @return string Имя конфигурационного файла системы развертывания.
+"" }}}
+function! s:Class.confFile() " {{{
 endfunction " }}}
 
 let g:vim_deploy#Deployer = s:Class
@@ -76,4 +83,13 @@ endfunction " }}}
 "" }}}
 function! vim_deploy#run(task) " {{{
   call vim_deploy#getDeployer().run(a:task)
+endfunction " }}}
+
+"" {{{
+" Метод открывает файл конфигурации системы развертывания в новом буфере.
+"" }}}
+function! vim_deploy#edit() " {{{
+  let l:buf = s:Buffer.new()
+  call l:buf.gactive('t')
+  exe 'e ' . vim_deploy#getDeployer().confFile()
 endfunction " }}}
