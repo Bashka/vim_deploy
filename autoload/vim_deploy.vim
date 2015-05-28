@@ -1,5 +1,5 @@
 " Date Create: 2015-02-06 23:11:26
-" Last Change: 2015-02-22 17:24:58
+" Last Change: 2015-05-28 11:20:22
 " Author: Artur Sh. Mamedbekov (Artur-Mamedbekov@yandex.ru)
 " License: GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 
@@ -41,7 +41,7 @@ endfunction " }}}
 function! s:Class.confFile() " {{{
 endfunction " }}}
 
-let g:vim_deploy#Deployer = s:Class
+let g:vim_deploy#AdapterInterface = s:Class
 " }}}
 
 "" {{{
@@ -49,7 +49,7 @@ let g:vim_deploy#Deployer = s:Class
 " @return vim_deploy#Deployer Объект-адаптер используемой системы развертывания.
 "" }}}
 function! vim_deploy#getDeployer() " {{{
-  exe 'return g:' . g:vim_deploy#.deployer . '#deployer.new()'
+  exe 'return g:' . g:vim_deploy#.adapter . '#adapter.new()'
 endfunction " }}}
 
 "" {{{
@@ -65,6 +65,7 @@ function! vim_deploy#list() " {{{
   endif
   " }}}
   call l:buf.temp()
+  call l:buf.option('syntax', g:vim_deploy#.deployer . 'List')
 
   function! l:buf.render() " {{{
     return '" Targets list (Press ? for help) "' . "\n\n" . vim_deploy#getDeployer().list()
@@ -119,4 +120,5 @@ function! vim_deploy#edit() " {{{
   let l:buf = s:Buffer.new()
   call l:buf.gactive('t')
   exe 'e ' . vim_deploy#getDeployer().confFile()
+  exe 'set syntax=' . g:vim_deploy#.deployer . 'Edit'
 endfunction " }}}

@@ -1,5 +1,5 @@
 " Date Create: 2015-02-06 23:06:39
-" Last Change: 2015-02-16 14:19:00
+" Last Change: 2015-05-28 11:18:08
 " Author: Artur Sh. Mamedbekov (Artur-Mamedbekov@yandex.ru)
 " License: GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 
@@ -10,7 +10,7 @@ let s:p = s:Plugin.new('vim_deploy', '1')
 "" {{{
 " @var string Имя адаптера для используемой пользователем системы развертывания.
 "" }}}
-let s:p.deployer = ''
+let s:p.adapter = ''
 
 call s:p.menu('Deploy', 'deploy', 1)
 call s:p.menu('List', 'list', 2)
