@@ -1,5 +1,5 @@
 " Date Create: 2015-02-06 23:11:26
-" Last Change: 2015-05-28 11:20:22
+" Last Change: 2015-05-31 16:27:37
 " Author: Artur Sh. Mamedbekov (Artur-Mamedbekov@yandex.ru)
 " License: GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 
@@ -7,7 +7,7 @@ let s:Object = vim_lib#base#Object#
 let s:Buffer = vim_lib#sys#Buffer#
 let s:Content = vim_lib#sys#Content#.new()
 
-" Deployer {{{
+" AdapterInterface {{{
 "" {{{
 " Данный класс определяет интерфейс адаптеров систем развертывания, используемых пользователем.
 " Класс-адапрет для конкретной системы развертывания должен реализовать приведенный интерфейс.
