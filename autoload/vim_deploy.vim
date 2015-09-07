@@ -1,5 +1,5 @@
 " Date Create: 2015-02-06 23:11:26
-" Last Change: 2015-05-31 16:27:37
+" Last Change: 2015-09-07 14:12:56
 " Author: Artur Sh. Mamedbekov (Artur-Mamedbekov@yandex.ru)
 " License: GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 
@@ -65,7 +65,7 @@ function! vim_deploy#list() " {{{
   endif
   " }}}
   call l:buf.temp()
-  call l:buf.option('syntax', g:vim_deploy#.deployer . 'List')
+  call l:buf.option('syntax', g:vim_deploy#.adapter . 'List')
 
   function! l:buf.render() " {{{
     return '" Targets list (Press ? for help) "' . "\n\n" . vim_deploy#getDeployer().list()
@@ -120,5 +120,5 @@ function! vim_deploy#edit() " {{{
   let l:buf = s:Buffer.new()
   call l:buf.gactive('t')
   exe 'e ' . vim_deploy#getDeployer().confFile()
-  exe 'set syntax=' . g:vim_deploy#.deployer . 'Edit'
+  exe 'set syntax=' . g:vim_deploy#.adapter . 'Edit'
 endfunction " }}}
